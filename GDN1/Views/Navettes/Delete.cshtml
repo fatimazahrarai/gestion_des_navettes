@@ -1,0 +1,121 @@
+﻿@model GDN1.Models.Navette
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Navette</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacité)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacité)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponibilé)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponibilé)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gamme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gamme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WIFI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WIFI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Climatisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Climatisation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieu.Zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu.Zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieu1.Zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu1.Zone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-outline-primary" /> |
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

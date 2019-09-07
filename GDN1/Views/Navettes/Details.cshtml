@@ -1,0 +1,115 @@
+﻿@model GDN1.Models.Navette
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Navette</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacité)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacité)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponibilé)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponibilé)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gamme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gamme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WIFI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WIFI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Climatisation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Climatisation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieu.Zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu.Zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieu1.Zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu1.Zone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

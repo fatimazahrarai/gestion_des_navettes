@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNet.Identity
+@using GDN1.Models;
+@if (Request.IsAuthenticated)
+{
+    
+    
+		Entities db = new Entities();
+		var user = db.AspNetUsers.Where(c => c.UserName == User.Identity.Name).FirstOrDefault();
+
+
+	if (user.Type == "Client")
+	{
+		<li>
+			@Html.ActionLink("Achat", "Index1", "Navettes", routeValues: null, htmlAttributes: new { title = "Manage" ,@class = "nav-link" })
+		</li>
+	}
+	else
+	{
+		<li>
+			@Html.ActionLink("Mes Navettes", "Index", "Navettes", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+		</li>
+	}
+	<li>
+		@Html.ActionLink("Bonjour " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+	</li>
+	<li><a class="nav-link" href="/Account/LogOff">Se déconnecter</a></li>
+
+    
+}
+else
+{
+    
+        <li>@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    
+}

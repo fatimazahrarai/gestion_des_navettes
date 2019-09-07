@@ -1,0 +1,100 @@
+﻿@model IEnumerable<GDN1.Models.Navette>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nouvelle Navette", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacité)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponibilé)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gamme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WIFI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Climatisation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lieu.Zone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lieu1.Zone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacité)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponibilé)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gamme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WIFI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Climatisation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lieu.Zone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lieu1.Zone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, htmlAttributes: new { title = "Manage", @class = "btn btn-link" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, htmlAttributes: new { title = "Manage", @class = "btn btn-link" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, htmlAttributes: new { title = "Manage", @class = "btn btn-link" })
+        </td>
+    </tr>
+}
+
+</table>

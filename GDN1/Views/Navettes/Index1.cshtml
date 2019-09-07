@@ -1,0 +1,158 @@
+﻿@model IEnumerable<GDN1.Models.Navette>
+@using GDN1.Models;
+@{
+	ViewBag.Title = "Index1";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Navette Actuelle</h2>
+
+
+<div class="row" align="center">
+	@{
+
+		Entities db = new Entities();
+		var Client = db.AspNetUsers.Where(c => c.UserName == User.Identity.Name).FirstOrDefault();
+		var Appartenir = Client.Appartenirs.OrderByDescending(c => c.Date).Where(c => c.Date < DateTime.Now.AddMonths(1)).FirstOrDefault();
+	}
+	@if (Appartenir != null)
+	{
+		var NavActu = Appartenir.Navette;
+
+		<div class="col-md-12 " style="background-color:darkorange">
+			<h2>@NavActu.AspNetUser.UserName</h2>
+			<p>
+				@NavActu.DateD - @NavActu.DateA
+			</p>
+			<p>
+				Services : @if (NavActu.WIFI)
+				{<i class="fas fa-wifi fa-2x"></i>}  @if (NavActu.Climatisation)
+				{<i class="fas fa-snowflake fa-2x"></i>} @if (NavActu.TV)
+				{<i class="fas fa-tv fa-2x"></i>}
+
+			</p>
+			<p>
+				Gamme : @NavActu.Gamme
+			</p>
+			<p>
+				Prix : @NavActu.Prix MAD
+			</p>
+		</div>
+	}
+</div>
+<h2>Navettes</h2>
+<div class="jumbotron">
+	<h1 class="display-3">Recherche</h1>
+	<form action="/Navettes/Index1/">
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label">Prix</label>
+				<div class="form-group">
+					<div class="input-group mb-3">
+
+						<input type="text" name="prix" class="form-control" aria-label="dirham">
+						<div class="input-group-append">
+							<span class="input-group-text" style="background-color:darkorange">MAD</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Date Début</label>
+				<div class="form-group">
+					<div class="input-group mb-3">
+
+						<input type="date" name="dated" class="form-control" aria-label="">
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Date Fin</label>
+				<div class="form-group">
+					<div class="input-group mb-3">
+
+						<input type="date" name="datef" class="form-control" aria-label="">
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Gamme</label>
+				<div class="form-group">
+					<div class="input-group mb-3">
+
+						<select class="custom-select" name="gamme">
+							<option selected="-">-</option>
+							<option value="Haut de gamme">Haut de gamme</option>
+							<option value="Economique">Economique</option>
+							<option value="Bas de Gamme">Bas de Gamme</option>
+						</select>
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Services</label>
+				<div class="form-group">
+					<div class="input-group mb-3">
+						<table>
+
+							<tr>
+								<td ><i class="fas fa-wifi fa-2x"></i></td>
+								<td><i class="fas fa-snowflake fa-2x"></i></td>
+								<td><i class="fas fa-tv fa-2x"></i></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="wifi" />Wifi</td>
+								<td><input type="checkbox" name="clim" />Clima</td>
+								<td><input type="checkbox" name="tv" />TV</td>
+							</tr>
+						</table>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<button class="btn btn-primary btn-lg" role="button">Rechercher</button>
+	</form>
+</div>
+@if (TempData["Msg"] != null)
+{
+	
+              <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4 class="alert-heading">Attention!</h4>
+				<p class="mb-0">@TempData["Msg"]</p>
+			 </div>
+            
+}
+<div class="row pagination" align="center">
+	@foreach (var item in Model)
+	{
+		<div class="col-md-4 " style="background-color:gray">
+			<h2>@item.AspNetUser.UserName</h2>
+			<p>
+				@item.DateD - @item.DateA
+			</p>
+			<p>
+				Services : @if (item.WIFI)
+				{<i class="fas fa-wifi fa-2x"></i>}  @if (item.Climatisation)
+				{<i class="fas fa-snowflake fa-2x"></i>} @if (item.TV)
+				{<i class="fas fa-tv fa-2x"></i>}
+
+			</p>
+			<p>
+				Gamme : @item.Gamme
+			</p>
+			<p>
+				Prix : @item.Prix MAD
+			</p>
+			<p><a class="btn btn-warning" href="/Navettes/Achat?id=@item.Id">Acheter en Ligne</a></p>
+		</div>
+	}
+	@if (Model.Count() == 0)
+	{
+		<div class="alert-danger" align="center">Aucune Nnavette Disponible</div>
+	}
+</div>
